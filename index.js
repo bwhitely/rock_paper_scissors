@@ -33,9 +33,40 @@ function round(player, npc){
     }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++){
-        let player = prompt("Choose rock, paper, or scissors");
-        console.log(round(player, computerPlay()));
+function game(choice, playerScore, computerScore) {
+    
+    const result = document.getElementById("result");
+    result.textContent = "Result: " + round(choice, computerPlay());
+
+    let plyrScore = document.getElementById("playerScore");
+    let compScore = document.getElementById("computerScore");
+
+    if (playerScore < 5 && computerScore < 5){
+        if (result.innerText.includes('win!')){
+            playerScore = parseInt(playerScore) + 1;
+            plyrScore.textContent = playerScore;
+        
+        }
+        else if (result.innerText.includes('lose!')){
+            computerScore = parseInt(computerScore) + 1;
+            compScore.textContent = computerScore;
+        }
     }
+    if (playerScore === 5){
+        result.textContent = "PLAYER WINS! GAME OVER!";
+    }
+    if (computerScore === 5){
+        result.textContent = "COMPUTER WINS! GAME OVER!";
+    }
+}
+
+function resetGame() {
+    let plyrScore = document.getElementById("playerScore");
+    let compScore = document.getElementById("computerScore");
+
+    const result = document.getElementById("result");
+    result.textContent = "Result: ";
+
+    plyrScore.textContent = 0;
+    compScore.textContent = 0;
 }

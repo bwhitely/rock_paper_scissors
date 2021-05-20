@@ -1,20 +1,57 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Rock, Paper, Scissors!</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <button onclick="game()">Play (5 rounds)</button>
+        <div class="container">
+            <h1>Rock, Paper, Scissors!</h1>
+            <div id="buttons">
+                <button id="rock">Rock</button>
+                <button id="paper">Paper</button>
+                <button id="scissors">Scissors</button>
+            </div>
+            <div>
+                <p id="result">Result:</p>
+            </div>
+            <div>
+                <h4>Scores</h4>
+                <p id="plyrScore">Player: <t id="playerScore">0</t></p>
+                <p id="compScore">Computer: <t id="computerScore">0</t></p>
+            </div>
+        </div>
+
+        <div id="buttons">
+            <button id="reset">Reset</button>
+        </div>
         
         <script src="index.js" async defer></script>
+        <script>
+            const rock = document.querySelector('#rock');
+            const paper = document.querySelector('#paper');
+            const scissors = document.querySelector('#scissors');
+            const reset = document.querySelector('#reset');
+
+            rock.addEventListener('click', () => {
+                game("ROCK", parseInt(document.getElementById("playerScore").textContent),
+                parseInt(document.getElementById("computerScore").textContent));
+            });
+            paper.addEventListener('click', () => {
+                game("PAPER", parseInt(document.getElementById("playerScore").textContent),
+                parseInt(document.getElementById("computerScore").textContent));
+            });
+            scissors.addEventListener('click', () => {
+                game("SCISSORS", parseInt(document.getElementById("playerScore").textContent),
+                parseInt(document.getElementById("computerScore").textContent));
+            })
+            reset.addEventListener('click', () => {
+                resetGame();
+            });
+        </script>
     </body>
 </html>
